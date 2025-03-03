@@ -7,6 +7,8 @@ import os
 import winreg as reg
 import json
 from datetime import datetime
+import pystray
+from PIL import Image
 
 class PomodoroTimer:
     def __init__(self, root):
@@ -35,7 +37,48 @@ class PomodoroTimer:
         
         # 初始化设置
         self.set_auto_start()
-        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+         # 初始化托盘图标
+        self.tray_icon = None
+        self.create_tray_icon()
+        
+        # 绑定窗口关闭事件
+        self.root.protocol('WM_DELETE_WINDOW', self.minimize_to_tray)
+
+    def create_tray_icon(self):
+        """创建系统托盘图标"""
+        # 创建托盘菜单
+        menu = (
+            pystray.MenuItem('显示窗口', self.restore_window),
+            pystray.MenuItem('退出', self.quit_program)
+        )
+        
+        # 加载图标（需要准备一个ico文件）
+        image = Image.open("tomato.ico")  # 准备16x16或32x32的ico文件
+        
+        # 创建托盘图标
+        self.tray_icon = pystray.Icon(
+            "pomodoro_timer",
+            image,
+            "番茄钟工具",
+            menu
+        )
+        
+    def minimize_to_tray(self):
+        """最小化到系统托盘"""
+        self.root.withdraw()  # 隐藏主窗口
+        self.tray_icon.run_detached()  # 显示托盘图标
+    
+    def restore_window(self):
+        """从托盘恢复窗口"""
+        self.tray_icon.stop()  # 隐藏托盘图标
+        self.root.deiconify()  # 显示主窗口
+    
+    def quit_program(self):
+        """完全退出程序"""
+        self.tray_icon.stop()
+        self.root.destroy()
+        os._exit(0)
 
     def create_widgets(self):
         # 时间显示
