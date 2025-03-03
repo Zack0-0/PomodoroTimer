@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox, simpledialog, Toplevel, Button
 import time
 import winsound
 import sys
@@ -12,61 +12,71 @@ class PomodoroTimer:
     def __init__(self, root):
         self.root = root
         self.root.title("番茄钟工具")
+        self.root.geometry("400x350")  # 调整窗口大小
         self.is_running = False
-        self.work_time = 3#25 * 60  # 默认工作时间25分钟
-        self.break_time = 3#5 * 60   # 默认休息时间5分钟
+        self.work_time = 3#25 * 60 # 25分钟
+        self.break_time = 3#5 * 60 # 5分钟
         self.current_time = self.work_time
         self.is_work = True
         
-        # 统计数据
+        # 统一字体设置
+        self.font_large = ("Microsoft YaHei", 48)
+        self.font_medium = ("Microsoft YaHei", 14)
+        self.font_small = ("Microsoft YaHei", 10)
+
+        # 加载统计数据
         self.completed_sessions = 0
-        self.total_work_time = 0  # 分钟为单位
+        self.total_work_time = 0
         self.history = []
-        self.load_stats()  # 加载历史数据
+        self.load_stats()
+
+        # 界面布局
+        self.create_widgets()
         
-        # 创建界面元素
-        self.time_label = tk.Label(root, text="25:00", font=("Arial", 48))
+        # 初始化设置
+        self.set_auto_start()
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def create_widgets(self):
+        # 时间显示
+        self.time_label = tk.Label(self.root, text="25:00", font=self.font_large)
         self.time_label.pack(pady=10)
-        
-        self.status_label = tk.Label(root, text="准备开始工作", font=("Arial", 14))
+
+        # 状态标签
+        self.status_label = tk.Label(self.root, text="准备开始工作", font=self.font_medium)
         self.status_label.pack(pady=5)
-        
-        self.stats_label = tk.Label(root, text=self.get_stats_text(), font=("Arial", 10))
+
+        # 统计标签
+        self.stats_label = tk.Label(self.root, text=self.get_stats_text(), font=self.font_small)
         self.stats_label.pack(pady=5)
-        
+
         # 控制按钮
-        btn_frame = tk.Frame(root)
+        btn_frame = tk.Frame(self.root)
         btn_frame.pack(pady=10)
-        
+
         self.start_btn = tk.Button(btn_frame, text="开始", command=self.toggle_timer, width=8)
         self.start_btn.pack(side=tk.LEFT, padx=5)
-        
-        self.reset_btn = tk.Button(btn_frame, text="重置统计", command=self.reset_stats, width=8)
+
+        self.reset_btn = tk.Button(btn_frame, text="重置统计", command=self.reset_stats, width=10)
         self.reset_btn.pack(side=tk.LEFT, padx=5)
-        
-        self.history_btn = tk.Button(btn_frame, text="查看历史", command=self.show_history, width=8)
+
+        self.history_btn = tk.Button(btn_frame, text="历史记录", command=self.show_history, width=10)
         self.history_btn.pack(side=tk.LEFT, padx=5)
-
-        # 初始化自启动设置
-        self.set_auto_start()
-        
-        # 退出时保存数据
-        root.protocol("WM_DELETE_WINDOW", self.on_close)
-
-    def get_stats_text(self):
-        return f"完成次数: {self.completed_sessions}次 | 总工作时间: {self.total_work_time}分钟"
-
-    def update_stats_display(self):
-        self.stats_label.config(text=self.get_stats_text())
 
     def toggle_timer(self):
         if not self.is_running:
-            self.is_running = True
-            self.start_btn.config(text="暂停")
-            self.run_timer()
+            self.start_timer()
         else:
-            self.is_running = False
-            self.start_btn.config(text="继续")
+            self.pause_timer()
+
+    def start_timer(self):
+        self.is_running = True
+        self.start_btn.config(text="暂停")
+        self.run_timer()
+
+    def pause_timer(self):
+        self.is_running = False
+        self.start_btn.config(text="继续")
 
     def run_timer(self):
         if self.is_running and self.current_time > 0:
@@ -76,38 +86,91 @@ class PomodoroTimer:
             self.root.after(1000, self.run_timer)
         elif self.current_time <= 0:
             self.is_running = False
-            self.show_notification()
-            self.switch_mode()
+            self.handle_complete()
 
-    def switch_mode(self):
-        winsound.MessageBeep()
+    def handle_complete(self):
         if self.is_work:
-            # 记录完成的工作周期
-            self.completed_sessions += 1
-            self.total_work_time += 25
-            self.history.append({
-                "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                "type": "工作周期",
-                "duration": 25
-            })
-            self.save_stats()
-            self.update_stats_display()
-            
+            self.record_work_session()
+            self.show_notification("工作完成！该休息了！", 
+                                buttons=["跳过休息", "开始休息", "暂停"])
+        else:
+            self.show_notification("休息结束！该工作了！",
+                                buttons=["开始工作", "暂停"])
+
+    def show_notification(self, message, buttons):
+        """自定义通知弹窗"""
+        dialog = Toplevel(self.root)
+        dialog.title("提示")
+        dialog.geometry("300x150")
+        
+        # 使弹窗保持最前
+        dialog.transient(self.root)
+        dialog.grab_set()
+        
+        # 弹窗内容
+        tk.Label(dialog, text=message, font=self.font_small).pack(pady=10)
+        
+        # 播放提示音（仅一次）
+        winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
+        
+        # 动态创建按钮
+        btn_frame = tk.Frame(dialog)
+        btn_frame.pack(pady=10)
+        
+        for btn_text in buttons:
+            Button(btn_frame, text=btn_text, width=8,
+                  command=lambda t=btn_text: self.handle_dialog_action(t, dialog)).pack(side=tk.LEFT, padx=5)
+
+    def handle_dialog_action(self, action, dialog):
+        """处理弹窗按钮点击"""
+        dialog.destroy()
+        
+        if "跳过" in action:
+            if self.is_work:
+                self.switch_mode(auto_start=False)
+            else:
+                self.switch_mode(auto_start=True)
+        elif "开始" in action:
+            self.switch_mode(auto_start=True)
+        elif "暂停" in action:
+            self.switch_mode(auto_start=False)
+
+    def switch_mode(self, auto_start=True):
+        """切换工作/休息模式"""
+        if self.is_work:
+            # 切换到休息模式
             self.is_work = False
             self.current_time = self.break_time
             self.status_label.config(text="休息时间")
         else:
+            # 切换到工作模式
             self.is_work = True
             self.current_time = self.work_time
             self.status_label.config(text="工作时间")
-            
-        self.start_btn.config(text="开始")
+        
         self.time_label.config(text=f"{self.current_time//60:02d}:00")
+        if auto_start:
+            self.start_timer()
+        else:
+            self.pause_timer()
 
-    def show_notification(self):
-        message = "该休息了！" if self.is_work else "该继续工作了！"
-        messagebox.showinfo("提示", message)
-        winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
+    def record_work_session(self):
+        """记录工作周期"""
+        self.completed_sessions += 1
+        self.total_work_time += 25
+        self.history.append({
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "type": "工作周期",
+            "duration": 25
+        })
+        self.save_stats()
+        self.update_stats_display()
+
+    def get_stats_text(self):
+        return f"完成次数: {self.completed_sessions}次 | 总工作时间: {self.total_work_time}分钟"
+
+    def update_stats_display(self):
+        self.stats_label.config(text=self.get_stats_text())
 
     def set_auto_start(self):
         """设置开机自启动"""
@@ -166,7 +229,8 @@ class PomodoroTimer:
     def on_close(self):
         """窗口关闭时的处理"""
         self.save_stats()
-        self.root.iconify()
+        self.root.iconify()  # 最小化窗口
+
 
 if __name__ == "__main__":
     root = tk.Tk()
