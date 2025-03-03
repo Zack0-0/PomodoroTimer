@@ -2,6 +2,10 @@
 
 一个简单易用的番茄钟计时器，帮助你高效工作和休息，提升专注力和生产力。
 
+<p align="center">
+   <img src="./screenshot.png" alt="番茄钟工具截图" width="50%">
+</p>
+
 ------
 
 ### 功能特点
@@ -17,30 +21,8 @@
 
 ### 安装与使用
 
-#### **安装依赖**
-
-1. 克隆项目到本地：
-
-   ```bash
-   git clone https://github.com/yourusername/pomodoro-timer.git
-   cd pomodoro-timer
-   ```
-
-#### **运行程序**
-
-```bash
-python PomodoroTimer.py
-```
-
-#### **打包为可执行文件**
-
-使用 PyInstaller 将程序打包为独立的 `.exe` 文件：
-
-```bash
-pyinstaller --onefile --windowed --icon=tomato.ico PomodoroTimer.py
-```
-
-打包完成后，可执行文件位于 `dist` 文件夹中（需要将图标 `tomato.ico` 和可执行文件 `PomodoroTimer.exe` 放到同一个目录）。
+解压
+需要将图标 `tomato.ico` 和可执行文件 `PomodoroTimer.exe` 放到同一个目录
 
 ------
 
@@ -57,22 +39,7 @@ pyinstaller --onefile --windowed --icon=tomato.ico PomodoroTimer.py
 
 ### 配置
 
-程序默认的工作时间为25分钟，休息时间为5分钟。你可以通过修改代码中的 `self.work_time` 和 `self.break_time` 参数来自定义时间。
-
-------
-
-### 项目结构
-
-
-```
-pomodoro-timer/
-│
-├── PomodoroTimer.py          # 主程序文件
-├── tomato.ico              # 程序图标
-├── pomodoro_stats.json     # 统计数据文件
-├── LICENSE                 # 许可证文件
-└── README.md               # 项目说明文件
-```
+程序默认的工作时间为25分钟，休息时间为5分钟（可执行文件暂不支持修改）。你可以下载源码通过修改代码中的 `self.work_time` 和 `self.break_time` 参数来自定义时间。
 
 ------
 
@@ -85,16 +52,3 @@ pomodoro-timer/
 ### 许可证
 
 本项目采用MIT License。版权所有 © Zack0-0。
-
-------
-
-### 联系方式
-
-- GitHub: Zack0-0
-- Email: 15355087827@163.com
-
-------
-
-### 致谢
-
-感谢所有为开源社区做出贡献的人！你的支持是我们不断进步的动力。
