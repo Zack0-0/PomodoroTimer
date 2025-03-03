@@ -78,13 +78,13 @@ pomodoro-timer/
 
 ### 贡献指南
 
-欢迎任何对项目的贡献！如果你有任何功能建议、改进意见或发现任何问题，请随时提交 [Issue](https://github.com/Zack0-0/PomodoroTimer/issues) 或 [Pull Request](https://github.com/Zack/PomodoroTimer/pulls)。
+欢迎任何对项目的贡献！如果你有任何功能建议、改进意见或发现任何问题，请随时提交 [Issue](https://github.com/Zack0-0/PomodoroTimer/issues) 或 [Pull Request](https://github.com/Zack0-0/PomodoroTimer/pulls)。
 
 ------
 
 ### 许可证
 
-本项目采用 [MIT License](https://github.com/Zack0-0/PomodoroTimer/LICENSE)。版权所有 © Zack0-0。
+本项目采用MIT License。版权所有 © Zack0-0。
 
 ------
 
