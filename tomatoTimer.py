@@ -1,10 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, Button
-import time
 import winsound
 import sys
 import os
-import winreg as reg
 import json
 from datetime import datetime
 import pystray
@@ -17,8 +15,8 @@ class PomodoroTimer:
         self.root.title("番茄钟工具")
         self.root.geometry("350x280")  # 调整窗口大小
         self.is_running = False
-        self.work_time = 3#25 * 60 # 25分钟
-        self.break_time = 3#5 * 60 # 5分钟
+        self.work_time = 25 * 60 # 25分钟
+        self.break_time = 5 * 60 # 5分钟
         self.current_time = self.work_time
         self.is_work = True
         
@@ -37,7 +35,6 @@ class PomodoroTimer:
         self.create_widgets()
         
         # 初始化设置
-        self.set_auto_start()
 
          # 初始化托盘图标
         self.tray_icon = None
@@ -240,18 +237,6 @@ class PomodoroTimer:
 
     def update_stats_display(self):
         self.stats_label.config(text=self.get_stats_text())
-
-    def set_auto_start(self):
-        """设置开机自启动"""
-        key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
-        exe_path = os.path.abspath(sys.argv[0])
-        
-        try:
-            key = reg.OpenKey(reg.HKEY_CURRENT_USER, key_path, 0, reg.KEY_SET_VALUE)
-            reg.SetValueEx(key, "PomodoroTimer", 0, reg.REG_SZ, exe_path)
-            reg.CloseKey(key)
-        except Exception as e:
-            messagebox.showerror("错误", f"设置自启动失败: {str(e)}")
 
     def save_stats(self):
         """保存统计数据到文件"""
