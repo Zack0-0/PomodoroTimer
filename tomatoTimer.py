@@ -9,6 +9,7 @@ import json
 from datetime import datetime
 import pystray
 from PIL import Image
+import threading
 
 class PomodoroTimer:
     def __init__(self, root):
@@ -40,6 +41,9 @@ class PomodoroTimer:
 
          # 初始化托盘图标
         self.tray_icon = None
+        self.tray_icon_running = True
+        self.tray_lock = threading.Lock()
+
         self.create_tray_icon()
         
         # 绑定窗口关闭事件
@@ -63,20 +67,37 @@ class PomodoroTimer:
             "番茄钟工具",
             menu
         )
+        # 在独立线程运行托盘图标
+        self.tray_thread = threading.Thread(
+            target=self.tray_icon.run,
+            daemon=True
+        )
+        self.tray_thread.start()
         
     def minimize_to_tray(self):
         """最小化到系统托盘"""
-        self.root.withdraw()  # 隐藏主窗口
-        self.tray_icon.run_detached()  # 显示托盘图标
+        self.root.withdraw()
+        
     
     def restore_window(self):
         """从托盘恢复窗口"""
-        self.tray_icon.stop()  # 隐藏托盘图标
-        self.root.deiconify()  # 显示主窗口
-    
+        # 在主线程操作GUI
+        self.root.after(0, self._restore_action)
+
+    def _restore_action(self):
+        """实际恢复操作"""
+        self.root.deiconify()
+
     def quit_program(self):
-        """完全退出程序"""
-        self.tray_icon.stop()
+        """安全退出程序"""
+        self.root.after(0, self._quit_action)
+
+    def _quit_action(self):
+        """实际退出操作"""
+        with self.tray_lock:
+            if self.tray_icon_running:
+                self.tray_icon.stop()
+                self.tray_icon_running = False
         self.root.destroy()
         os._exit(0)
 
@@ -154,6 +175,7 @@ class PomodoroTimer:
 
     def show_notification(self, message, buttons):
         """自定义通知弹窗"""
+        self.restore_window()  # 确保窗口从托盘恢复
         dialog = Toplevel(self.root)
         dialog.title("提示")
         dialog.geometry("280x120")  # 调整弹窗尺寸
