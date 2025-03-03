@@ -1,7 +1,6 @@
 import tkinter as tk
-from tkinter import messagebox, simpledialog, Toplevel, Button
+from tkinter import messagebox, Toplevel, Button
 import winsound
-import sys
 import os
 import json
 from datetime import datetime
@@ -12,7 +11,7 @@ import threading
 class PomodoroTimer:
     def __init__(self, root):
         self.root = root
-        self.root.title("番茄钟工具")
+        self.root.title("番茄钟")
         self.root.geometry("350x280")  # 调整窗口大小
         self.is_running = False
         self.work_time = 25 * 60 # 25分钟
@@ -61,7 +60,7 @@ class PomodoroTimer:
         self.tray_icon = pystray.Icon(
             "pomodoro_timer",
             image,
-            "番茄钟工具",
+            "番茄钟",
             menu
         )
         # 在独立线程运行托盘图标
