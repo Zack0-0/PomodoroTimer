@@ -12,7 +12,7 @@ class PomodoroTimer:
     def __init__(self, root):
         self.root = root
         self.root.title("番茄钟工具")
-        self.root.geometry("400x350")  # 调整窗口大小
+        self.root.geometry("350x280")  # 调整窗口大小
         self.is_running = False
         self.work_time = 3#25 * 60 # 25分钟
         self.break_time = 3#5 * 60 # 5分钟
@@ -97,43 +97,41 @@ class PomodoroTimer:
             self.show_notification("休息结束！该工作了！",
                                 buttons=["开始工作", "暂停"])
 
+    def handle_dialog_action(self, action, dialog):
+        """处理弹窗按钮点击"""
+        dialog.destroy()
+        
+        if action == "跳过休息":
+            self.is_work = False  # 强制进入休息结束状态
+            self.switch_mode(auto_start=True)  # 直接开始新工作周期
+        elif "开始" in action:
+            self.switch_mode(auto_start=True)
+        elif "暂停" in action:
+            self.switch_mode(auto_start=False)
+
     def show_notification(self, message, buttons):
         """自定义通知弹窗"""
         dialog = Toplevel(self.root)
         dialog.title("提示")
-        dialog.geometry("300x150")
+        dialog.geometry("280x120")  # 调整弹窗尺寸
         
         # 使弹窗保持最前
         dialog.transient(self.root)
         dialog.grab_set()
         
-        # 弹窗内容
-        tk.Label(dialog, text=message, font=self.font_small).pack(pady=10)
+        # 弹窗内容（调大文字）
+        tk.Label(dialog, text=message, font=self.font_medium).pack(pady=8)
         
         # 播放提示音（仅一次）
         winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
         
-        # 动态创建按钮
+        # 动态创建按钮（保持原字体大小）
         btn_frame = tk.Frame(dialog)
-        btn_frame.pack(pady=10)
+        btn_frame.pack(pady=5)
         
         for btn_text in buttons:
-            Button(btn_frame, text=btn_text, width=8,
-                  command=lambda t=btn_text: self.handle_dialog_action(t, dialog)).pack(side=tk.LEFT, padx=5)
-
-    def handle_dialog_action(self, action, dialog):
-        """处理弹窗按钮点击"""
-        dialog.destroy()
-        
-        if "跳过" in action:
-            if self.is_work:
-                self.switch_mode(auto_start=False)
-            else:
-                self.switch_mode(auto_start=True)
-        elif "开始" in action:
-            self.switch_mode(auto_start=True)
-        elif "暂停" in action:
-            self.switch_mode(auto_start=False)
+            Button(btn_frame, text=btn_text, width=8, font=self.font_small,
+                  command=lambda t=btn_text: self.handle_dialog_action(t, dialog)).pack(side=tk.LEFT, padx=3)
 
     def switch_mode(self, auto_start=True):
         """切换工作/休息模式"""
@@ -153,6 +151,12 @@ class PomodoroTimer:
             self.start_timer()
         else:
             self.pause_timer()
+
+        # 当跳过休息时需要特殊处理
+        if not self.is_work and not auto_start:
+            self.is_work = True  # 恢复工作状态
+            self.current_time = self.work_time
+            self.status_label.config(text="工作时间")
 
     def record_work_session(self):
         """记录工作周期"""
