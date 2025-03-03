@@ -3,7 +3,7 @@
 一个简单易用的番茄钟计时器，帮助你高效工作和休息，提升专注力和生产力。
 
 <p align="center">
-   <img src="./screenshot.png" alt="番茄钟工具截图" width="50%">
+   <img src="./screenshot.png" alt="番茄钟工具截图" width="30%">
 </p>
 
 ------
