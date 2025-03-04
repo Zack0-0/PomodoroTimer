@@ -18,6 +18,9 @@ class PomodoroTimer:
         self.break_time = 5 * 60 # 5分钟
         self.current_time = self.work_time
         self.is_work = True
+
+        # 设置窗口图标
+        self.root.iconbitmap("tomato.ico")
         
         # 统一字体设置
         self.font_large = ("Microsoft YaHei", 48)
