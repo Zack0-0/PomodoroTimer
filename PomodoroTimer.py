@@ -16,8 +16,6 @@ class PomodoroTimer:
         self.is_running = False
         self.work_time = 25 * 60 # 25分钟
         self.break_time = 5 * 60 # 5分钟
-        self.current_time = self.work_time
-        self.is_work = True
 
         # 设置窗口图标
         self.root.iconbitmap("tomato.ico")
@@ -32,6 +30,9 @@ class PomodoroTimer:
         self.total_work_time = 0
         self.history = []
         self.load_stats()
+
+        self.current_time = self.work_time
+        self.is_work = True
 
         # 界面布局
         self.create_widgets()
@@ -53,6 +54,7 @@ class PomodoroTimer:
         # 创建托盘菜单
         menu = (
             pystray.MenuItem('显示窗口', self.restore_window),
+            pystray.MenuItem('时间设置', self.show_settings),
             pystray.MenuItem('退出', self.quit_program)
         )
         
@@ -100,9 +102,63 @@ class PomodoroTimer:
         self.root.destroy()
         os._exit(0)
 
+    def show_settings(self):
+        """显示时间设置窗口"""
+        self.root.after(0, self._show_settings_dialog)
+
+    def _show_settings_dialog(self):
+        """实际显示设置对话框"""
+        dialog = Toplevel(self.root)
+        dialog.title("时间设置")
+        dialog.transient(self.root)
+        dialog.grab_set()
+        
+        # 当前设置值（转换为分钟）
+        current_work = self.work_time // 60
+        current_break = self.break_time // 60
+        
+        # 工作时间输入框
+        tk.Label(dialog, text="工作时间（分钟）:").grid(row=0, column=0, padx=5, pady=5)
+        work_entry = tk.Entry(dialog)
+        work_entry.insert(0, str(current_work))
+        work_entry.grid(row=0, column=1, padx=5, pady=5)
+        
+        # 休息时间输入框
+        tk.Label(dialog, text="休息时间（分钟）:").grid(row=1, column=0, padx=5, pady=5)
+        break_entry = tk.Entry(dialog)
+        break_entry.insert(0, str(current_break))
+        break_entry.grid(row=1, column=1, padx=5, pady=5)
+    
+        # 确认按钮
+        def save_settings():
+            try:
+                new_work = int(work_entry.get())
+                new_break = int(break_entry.get())
+                if new_work <= 0 or new_break <= 0:
+                    raise ValueError
+            except ValueError:
+                messagebox.showerror("错误", "请输入有效的正整数")
+                return
+            
+            self.work_time = new_work * 60
+            self.break_time = new_break * 60
+            
+            # 如果当前处于工作模式，下次切换时会自动使用新值
+            if self.is_work:
+                self.current_time = self.work_time
+            else:
+                self.current_time = self.break_time
+            
+            self.time_label.config(text=f"{self.current_time//60:02d}:00")
+            self.save_stats()  # 保存设置到文件
+            dialog.destroy()
+            messagebox.showinfo("成功", "时间设置已保存")
+    
+        tk.Button(dialog, text="保存", command=save_settings).grid(row=2, columnspan=2, pady=10)
+
     def create_widgets(self):
         # 时间显示
-        self.time_label = tk.Label(self.root, text="25:00", font=self.font_large)
+        self.time_label = tk.Label(self.root, text=f"{self.current_time//60:02d}:00", font=self.font_large)
         self.time_label.pack(pady=10)
 
         # 状态标签
@@ -225,11 +281,11 @@ class PomodoroTimer:
     def record_work_session(self):
         """记录工作周期"""
         self.completed_sessions += 1
-        self.total_work_time += 25
+        self.total_work_time += self.work_time // 60  # 使用当前的工作时间
         self.history.append({
             "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "type": "工作周期",
-            "duration": 25
+            "duration": self.work_time // 60  # 使用当前的工作时间
         })
         self.save_stats()
         self.update_stats_display()
@@ -245,7 +301,9 @@ class PomodoroTimer:
         data = {
             "completed": self.completed_sessions,
             "total_time": self.total_work_time,
-            "history": self.history
+            "history": self.history,
+            "work_time": self.work_time,  
+            "break_time": self.break_time
         }
         try:
             with open("pomodoro_stats.json", "w") as f:
@@ -262,6 +320,8 @@ class PomodoroTimer:
                     self.completed_sessions = data.get("completed", 0)
                     self.total_work_time = data.get("total_time", 0)
                     self.history = data.get("history", [])
+                    self.work_time = data.get("work_time", 25*60)  # 默认25分钟
+                    self.break_time = data.get("break_time", 5*60)  # 默认5分钟
         except Exception as e:
             print(f"加载数据失败: {e}")
 
