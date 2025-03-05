@@ -320,8 +320,11 @@ class PomodoroTimer:
     def load_stats(self):
         """从文件加载统计数据"""
         try:
+            # 使用测试数据请将路径修改为 gen_data.json
             if os.path.exists("pomodoro_stats.json"):
+            #if os.path.exists("gen_data.json"):
                 with open("pomodoro_stats.json", "r") as f:
+                #with open("gen_data.json", "r") as f:
                     data = json.load(f)
                     self.completed_sessions = data.get("completed", 0)
                     self.total_work_time = data.get("total_time", 0)
