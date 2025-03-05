@@ -3,10 +3,13 @@ from tkinter import messagebox, Toplevel, Button
 import winsound
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import pystray
 from PIL import Image
 import threading
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from collections import defaultdict
 
 class PomodoroTimer:
     def __init__(self, root):
@@ -48,6 +51,9 @@ class PomodoroTimer:
         
         # 绑定窗口关闭事件
         self.root.protocol('WM_DELETE_WINDOW', self.minimize_to_tray)
+
+        # 历史记录窗口
+        self.history_window = None
 
     def create_tray_icon(self):
         """创建系统托盘图标"""
@@ -336,11 +342,98 @@ class PomodoroTimer:
 
     def show_history(self):
         """显示历史记录"""
+        # 防止重复打开
+        if self.history_window is not None and self.history_window.winfo_exists():
+            self.history_window.lift()
+            return
+        
+        # 创建历史记录窗口
+        self.history_window = Toplevel(self.root)
+        self.history_window.title("历史记录")
+        self.history_window.geometry("300x300")
         history_text = "\n".join(
             [f"{item['date']} - {item['type']} ({item['duration']}分钟)" 
              for item in self.history[-10:]]  # 显示最近10条记录
         ) or "暂无历史记录"
-        messagebox.showinfo("历史记录", f"最近10条记录：\n{history_text}")
+        tk.Label(self.history_window, text=f"最近10条记录：\n{history_text}", font=self.font_small).pack(pady=10)
+        
+        btn_frame = tk.Frame(self.history_window)
+        btn_frame.pack(pady=10)
+        
+        # 可视化历史数据按钮
+        tk.Button(btn_frame, text="本周", command=lambda: self.visualize_history('week')).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text="本月", command=lambda: self.visualize_history('month')).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text="本年", command=lambda: self.visualize_history('year')).pack(side=tk.LEFT, padx=5)
+
+    def visualize_history(self, period):
+        """可视化历史数据"""
+        now = datetime.now()
+        if period == 'week':
+            start_date = now - timedelta(days=now.weekday())  # 本周开始日期
+            date_format = "%Y-%m-%d"
+            interval = 'day'
+            x_labels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            date_range = [start_date + timedelta(days=i) for i in range(7)]
+        elif period == 'month':
+            start_date = now.replace(day=1)  # 本月开始日期
+            date_format = "%Y-%m-%d"
+            interval = 'day'
+            x_labels = [f'{i}日' for i in range(1, 32, 2)]
+            date_range = [start_date + timedelta(days=i) for i in range((now.replace(month=now.month % 12 + 1, day=1) - start_date).days)]
+        elif period == 'year':
+            start_date = now.replace(month=1, day=1)  # 本年开始日期
+            date_format = "%Y-%m"
+            interval = 'month'
+            x_labels = [f'{i}月' for i in range(1, 13)]
+            date_range = [start_date.replace(month=i) for i in range(1, 13)]
+        
+        filtered_history = [item for item in self.history if datetime.strptime(item['date'], "%Y-%m-%d %H:%M") >= start_date]
+
+        # 没有数据时提示
+        if not filtered_history:
+            messagebox.showinfo("提示", "目前还没有历史数据，再努努力吧！")
+            return
+        
+        # 聚合数据
+        aggregated_data = defaultdict(int)
+        for item in filtered_history:
+            date_key = datetime.strptime(item['date'], "%Y-%m-%d %H:%M").strftime(date_format)
+            aggregated_data[date_key] += item['duration']
+        
+        dates = [date.strftime(date_format) for date in date_range]
+        durations = [aggregated_data[date] for date in dates]
+        
+        # 设置中文字体
+        plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 使用微软雅黑
+        plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
+        
+        # 绘制柱状图
+        plt.figure(figsize=(6, 4))
+        plt.bar(dates, durations)
+        plt.ylabel('工作时长 (分钟)')
+        if period == 'week':
+            plt.title('本周的使用情况')
+        elif period == 'month':
+            plt.title('本月的使用情况')
+        elif period == 'year':
+            plt.title('本年的使用情况')
+        
+        # 设置日期显示格式
+        if interval == 'day':
+            plt.gca().xaxis.set_major_locator(mdates.DayLocator())
+            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+            if period == 'month':
+                plt.xticks(ticks=dates[::2], labels=x_labels[:len(dates[::2])], rotation=45)  # 只显示奇数日
+            else:
+                plt.xticks(ticks=dates, labels=x_labels[:len(dates)], rotation=45)
+        elif interval == 'month':
+            plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
+            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+            plt.xticks(ticks=dates, labels=x_labels[:len(dates)], rotation=45)
+        
+        plt.gcf().autofmt_xdate()  # 自动旋转日期标签
+        plt.grid(False)
+        plt.show()
 
     def on_close(self):
         """窗口关闭时的处理"""
