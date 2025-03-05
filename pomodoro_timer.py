@@ -321,10 +321,10 @@ class PomodoroTimer:
         """从文件加载统计数据"""
         try:
             # 使用测试数据请将路径修改为 gen_data.json
-            if os.path.exists("pomodoro_stats.json"):
-            #if os.path.exists("gen_data.json"):
-                with open("pomodoro_stats.json", "r") as f:
-                #with open("gen_data.json", "r") as f:
+            '''if os.path.exists("pomodoro_stats.json"):
+                with open("pomodoro_stats.json", "r") as f:'''
+            if os.path.exists("gen_data.json"):
+                with open("gen_data.json", "r") as f:
                     data = json.load(f)
                     self.completed_sessions = data.get("completed", 0)
                     self.total_work_time = data.get("total_time", 0)
@@ -354,6 +354,10 @@ class PomodoroTimer:
         self.history_window = Toplevel(self.root)
         self.history_window.title("历史记录")
         self.history_window.geometry("300x300")
+
+        # 设置窗口图标
+        self.history_window.iconbitmap("his_logo.ico")
+
         history_text = "\n".join(
             [f"{item['date']} - {item['type']} ({item['duration']}分钟)" 
              for item in self.history[-10:]]  # 显示最近10条记录
@@ -436,6 +440,10 @@ class PomodoroTimer:
         
         plt.gcf().autofmt_xdate()  # 自动旋转日期标签
         plt.grid(False)
+
+        # 设置窗口标题和图标
+        plt.gcf().canvas.manager.window.wm_iconbitmap('tomato.ico')
+
         plt.show()
 
     def on_close(self):
