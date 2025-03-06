@@ -442,7 +442,8 @@ class PomodoroTimer:
         plt.grid(False)
 
         # 设置窗口标题和图标
-        plt.gcf().canvas.manager.window.wm_iconbitmap('tomato.ico')
+        plt.gcf().canvas.manager.window.wm_iconbitmap('visualize_logo.ico')
+        plt.gcf().canvas.manager.set_window_title('番茄钟 - 数据可视化')
 
         plt.show()
 
