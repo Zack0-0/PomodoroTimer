@@ -10,6 +10,17 @@ import threading
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from collections import defaultdict
+import sys
+
+def resource_path(relative_path):
+    """获取资源的绝对路径（适配PyInstaller打包模式）"""
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+tomato_path = resource_path("tomato.ico")
+his_path = resource_path("his_logo.ico")
+visualize_path = resource_path("visualize_logo.ico")
 
 class PomodoroTimer:
     def __init__(self, root):
@@ -21,7 +32,7 @@ class PomodoroTimer:
         self.break_time = 5 * 60 # 5分钟
 
         # 设置窗口图标
-        self.root.iconbitmap("tomato.ico")
+        self.root.iconbitmap(tomato_path)
         
         # 统一字体设置
         self.font_large = ("Microsoft YaHei", 48)
@@ -65,7 +76,7 @@ class PomodoroTimer:
         )
         
         # 加载图标（需要准备一个ico文件）
-        image = Image.open("tomato.ico")  # 准备16x16或32x32的ico文件
+        image = Image.open(tomato_path)  # 准备16x16或32x32的ico文件
         
         # 创建托盘图标
         self.tray_icon = pystray.Icon(
@@ -356,7 +367,7 @@ class PomodoroTimer:
         self.history_window.geometry("300x300")
 
         # 设置窗口图标
-        self.history_window.iconbitmap("his_logo.ico")
+        self.history_window.iconbitmap(his_path)
 
         history_text = "\n".join(
             [f"{item['date']} - {item['type']} ({item['duration']}分钟)" 
@@ -442,7 +453,7 @@ class PomodoroTimer:
         plt.grid(False)
 
         # 设置窗口标题和图标
-        plt.gcf().canvas.manager.window.wm_iconbitmap('visualize_logo.ico')
+        plt.gcf().canvas.manager.window.wm_iconbitmap(visualize_path)
         plt.gcf().canvas.manager.set_window_title('番茄钟 - 数据可视化')
 
         plt.show()
