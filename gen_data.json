@@ -1,513 +1,508 @@
 {
-    "completed": 101,
-    "total_time": 3666,
+    "completed": 100,
+    "total_time": 3465,
     "history": [
         {
-            "date": "2025-01-01 10:00",
+            "date": "2025-06-22 04:19",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 25
+            "duration": 29
         },
         {
-            "date": "2025-07-22 06:23",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 48
-        },
-        {
-            "date": "2025-10-18 00:42",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
-        },
-        {
-            "date": "2025-07-08 21:59",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 23
-        },
-        {
-            "date": "2025-03-30 10:29",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 37
-        },
-        {
-            "date": "2025-01-12 01:19",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 46
-        },
-        {
-            "date": "2025-05-01 12:54",
+            "date": "2025-01-07 01:43",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 31
         },
         {
-            "date": "2025-04-02 07:00",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 41
-        },
-        {
-            "date": "2025-05-21 23:15",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 23
-        },
-        {
-            "date": "2025-03-25 22:10",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 45
-        },
-        {
-            "date": "2025-12-28 18:56",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 28
-        },
-        {
-            "date": "2025-11-20 11:22",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 33
-        },
-        {
-            "date": "2025-02-01 11:45",
+            "date": "2025-11-24 12:35",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 49
         },
         {
-            "date": "2025-01-13 00:56",
+            "date": "2025-12-25 01:33",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 46
+        },
+        {
+            "date": "2025-08-04 22:49",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 29
+        },
+        {
+            "date": "2025-02-22 08:31",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 45
+        },
+        {
+            "date": "2025-11-07 17:56",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 42
+        },
+        {
+            "date": "2025-02-24 05:26",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 29
+        },
+        {
+            "date": "2025-08-23 18:54",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 42
+        },
+        {
+            "date": "2025-06-30 17:11",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 20
+        },
+        {
+            "date": "2025-12-06 18:04",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 40
+        },
+        {
+            "date": "2025-07-08 14:15",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 45
+        },
+        {
+            "date": "2025-09-30 04:03",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-01-20 23:32",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-04-23 16:29",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 31
+        },
+        {
+            "date": "2025-06-21 06:58",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 41
+        },
+        {
+            "date": "2025-11-30 14:09",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 41
+        },
+        {
+            "date": "2025-07-29 05:03",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 37
+        },
+        {
+            "date": "2025-12-19 00:47",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 37
+        },
+        {
+            "date": "2025-12-09 20:23",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 41
+        },
+        {
+            "date": "2025-04-27 06:56",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 21
+        },
+        {
+            "date": "2025-01-10 03:17",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 44
+        },
+        {
+            "date": "2025-05-14 01:46",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 46
+        },
+        {
+            "date": "2025-05-16 13:33",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 25
+        },
+        {
+            "date": "2025-09-24 20:15",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 21
+        },
+        {
+            "date": "2025-02-05 20:18",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-08-13 16:46",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-11-03 11:53",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 42
+        },
+        {
+            "date": "2025-04-17 23:41",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-07-21 04:17",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 43
+        },
+        {
+            "date": "2025-11-16 04:54",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 20
+        },
+        {
+            "date": "2025-12-09 08:06",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 48
+        },
+        {
+            "date": "2025-08-13 02:37",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-06-08 21:16",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 42
+        },
+        {
+            "date": "2025-02-27 05:13",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 37
+        },
+        {
+            "date": "2025-02-12 19:13",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 41
+        },
+        {
+            "date": "2025-11-02 10:42",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 23
+        },
+        {
+            "date": "2025-03-07 06:52",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-07-26 15:09",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 29
+        },
+        {
+            "date": "2025-08-12 19:08",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 44
+        },
+        {
+            "date": "2025-02-06 17:11",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 40
+        },
+        {
+            "date": "2025-08-17 07:15",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 30
+        },
+        {
+            "date": "2025-01-20 18:32",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 24
+        },
+        {
+            "date": "2025-09-21 19:33",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 48
+        },
+        {
+            "date": "2025-03-04 08:17",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 43
+        },
+        {
+            "date": "2025-09-24 07:37",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-05-16 15:00",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 22
+        },
+        {
+            "date": "2025-10-13 05:25",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 23
+        },
+        {
+            "date": "2025-03-07 14:58",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-10-29 04:07",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 50
+        },
+        {
+            "date": "2025-09-04 17:02",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-06-12 21:28",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 28
+        },
+        {
+            "date": "2025-02-28 14:17",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-07-10 17:53",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 25
+        },
+        {
+            "date": "2025-06-18 23:11",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 37
+        },
+        {
+            "date": "2025-03-20 07:18",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 34
         },
         {
-            "date": "2025-03-14 22:23",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
-        },
-        {
-            "date": "2025-12-21 02:06",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
-        },
-        {
-            "date": "2025-03-26 23:18",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 46
-        },
-        {
-            "date": "2025-12-02 00:25",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-07-15 09:06",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 31
-        },
-        {
-            "date": "2025-05-17 00:15",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 37
-        },
-        {
-            "date": "2025-11-05 06:35",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 26
-        },
-        {
-            "date": "2025-09-04 17:58",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 28
-        },
-        {
-            "date": "2025-07-30 13:51",
+            "date": "2025-05-07 05:09",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 22
         },
         {
-            "date": "2025-03-09 07:53",
+            "date": "2025-10-16 13:55",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 20
+            "duration": 50
         },
         {
-            "date": "2025-11-09 21:10",
+            "date": "2025-04-22 22:54",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
+            "duration": 34
         },
         {
-            "date": "2025-06-07 10:25",
+            "date": "2025-04-08 10:55",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 38
+            "duration": 25
         },
         {
-            "date": "2025-02-10 18:15",
+            "date": "2025-03-01 15:05",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
+            "duration": 46
         },
         {
-            "date": "2025-12-13 10:23",
+            "date": "2025-04-27 22:09",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 41
+            "duration": 37
         },
         {
-            "date": "2025-03-31 06:37",
+            "date": "2025-02-10 12:50",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
+            "duration": 50
         },
         {
-            "date": "2025-07-09 01:07",
+            "date": "2025-02-09 09:37",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 36
+            "duration": 37
         },
         {
-            "date": "2025-02-09 01:09",
+            "date": "2025-04-16 07:10",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 30
         },
         {
-            "date": "2025-01-13 20:52",
+            "date": "2025-01-29 05:33",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 44
+            "duration": 41
         },
         {
-            "date": "2025-09-06 12:13",
+            "date": "2025-09-24 06:38",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 44
+            "duration": 25
         },
         {
-            "date": "2025-02-02 19:42",
+            "date": "2025-08-08 15:23",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 43
+            "duration": 25
         },
         {
-            "date": "2025-06-09 09:48",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 31
-        },
-        {
-            "date": "2025-03-27 23:32",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 32
-        },
-        {
-            "date": "2025-04-02 05:07",
+            "date": "2025-02-12 00:10",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 40
         },
         {
-            "date": "2025-06-08 05:24",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 31
-        },
-        {
-            "date": "2025-04-10 12:09",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 31
-        },
-        {
-            "date": "2025-02-01 11:01",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 28
-        },
-        {
-            "date": "2025-03-20 16:29",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-06-12 03:16",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
-        },
-        {
-            "date": "2025-07-27 16:24",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
-        },
-        {
-            "date": "2025-05-04 11:07",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 48
-        },
-        {
-            "date": "2025-11-13 17:55",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-01-10 12:07",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 32
-        },
-        {
-            "date": "2025-02-04 05:38",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-10-23 13:06",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 20
-        },
-        {
-            "date": "2025-06-24 19:27",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 41
-        },
-        {
-            "date": "2025-12-02 03:40",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 44
-        },
-        {
-            "date": "2025-01-30 05:20",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 46
-        },
-        {
-            "date": "2025-11-01 10:58",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 21
-        },
-        {
-            "date": "2025-04-27 00:14",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-06-07 04:42",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-05-20 19:04",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 48
-        },
-        {
-            "date": "2025-12-26 01:00",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-11-14 00:57",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 44
-        },
-        {
-            "date": "2025-03-24 16:20",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 46
-        },
-        {
-            "date": "2025-08-08 01:10",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-02-24 01:20",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 39
-        },
-        {
-            "date": "2025-03-20 05:07",
+            "date": "2025-11-25 12:58",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 27
         },
         {
-            "date": "2025-12-18 21:13",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 46
-        },
-        {
-            "date": "2025-06-04 05:52",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 37
-        },
-        {
-            "date": "2025-08-15 13:47",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 21
-        },
-        {
-            "date": "2025-07-09 08:31",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 35
-        },
-        {
-            "date": "2025-07-07 21:40",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-01-26 03:13",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 25
-        },
-        {
-            "date": "2025-01-02 10:20",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 39
-        },
-        {
-            "date": "2025-02-07 11:14",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 38
-        },
-        {
-            "date": "2025-11-18 20:51",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 26
-        },
-        {
-            "date": "2025-06-19 03:33",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 39
-        },
-        {
-            "date": "2025-05-16 23:16",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 25
-        },
-        {
-            "date": "2025-10-06 11:01",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 28
-        },
-        {
-            "date": "2025-01-19 12:25",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 22
-        },
-        {
-            "date": "2025-04-03 10:15",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
-        },
-        {
-            "date": "2025-01-23 01:24",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 44
-        },
-        {
-            "date": "2025-04-12 05:49",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
-        },
-        {
-            "date": "2025-12-14 15:12",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 50
-        },
-        {
-            "date": "2025-05-10 03:43",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 47
-        },
-        {
-            "date": "2025-12-29 21:23",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 21
-        },
-        {
-            "date": "2025-08-01 04:22",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-09-25 22:50",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 39
-        },
-        {
-            "date": "2025-02-04 08:16",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 49
-        },
-        {
-            "date": "2025-02-01 05:27",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 22
-        },
-        {
-            "date": "2025-06-25 21:29",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 40
-        },
-        {
-            "date": "2025-05-24 14:36",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 32
-        },
-        {
-            "date": "2025-03-02 22:51",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 50
-        },
-        {
-            "date": "2025-08-18 01:53",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 43
-        },
-        {
-            "date": "2025-12-30 19:42",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 30
-        },
-        {
-            "date": "2025-03-03 09:18",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 23
-        },
-        {
-            "date": "2025-07-23 19:44",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 38
-        },
-        {
-            "date": "2025-05-18 17:14",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 25
-        },
-        {
-            "date": "2025-09-16 17:36",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 42
-        },
-        {
-            "date": "2025-08-19 13:47",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 47
-        },
-        {
-            "date": "2025-04-06 08:27",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 37
-        },
-        {
-            "date": "2025-07-12 01:42",
-            "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 37
-        },
-        {
-            "date": "2025-07-21 22:29",
+            "date": "2025-04-29 15:18",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 41
         },
         {
-            "date": "2025-09-01 07:19",
+            "date": "2025-08-27 10:06",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 45
+            "duration": 21
         },
         {
-            "date": "2025-02-07 19:34",
+            "date": "2025-10-17 04:31",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 24
+        },
+        {
+            "date": "2025-03-30 04:40",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 43
+        },
+        {
+            "date": "2025-03-26 21:30",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 35
         },
         {
-            "date": "2025-01-29 17:36",
+            "date": "2025-06-22 20:38",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 20
+        },
+        {
+            "date": "2025-12-11 22:57",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 44
+        },
+        {
+            "date": "2025-01-10 18:08",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 36
+        },
+        {
+            "date": "2025-01-22 20:05",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 46
+        },
+        {
+            "date": "2025-04-13 08:21",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 23
+        },
+        {
+            "date": "2025-05-30 05:04",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 29
+        },
+        {
+            "date": "2025-08-21 15:25",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 24
+        },
+        {
+            "date": "2025-11-04 16:31",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 36
+        },
+        {
+            "date": "2026-01-01 22:29",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-03-07 14:09",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 32
+        },
+        {
+            "date": "2025-01-31 01:27",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 44
+        },
+        {
+            "date": "2025-11-06 07:52",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 38
+        },
+        {
+            "date": "2025-02-10 00:37",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 29
+        },
+        {
+            "date": "2025-04-08 14:09",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 30
+        },
+        {
+            "date": "2025-05-22 21:26",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 30
+        },
+        {
+            "date": "2025-05-15 19:48",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 22
+        },
+        {
+            "date": "2025-01-16 07:11",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 48
+        },
+        {
+            "date": "2025-02-04 03:49",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 36
+        },
+        {
+            "date": "2025-02-15 01:34",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 23
+        },
+        {
+            "date": "2025-02-26 16:42",
             "type": "\u5de5\u4f5c\u5468\u671f",
             "duration": 47
         },
         {
-            "date": "2025-06-22 18:16",
+            "date": "2025-12-12 11:19",
             "type": "\u5de5\u4f5c\u5468\u671f",
-            "duration": 23
+            "duration": 47
+        },
+        {
+            "date": "2025-09-20 04:58",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 22
+        },
+        {
+            "date": "2025-06-07 06:51",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 36
+        },
+        {
+            "date": "2025-04-23 08:01",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 24
+        },
+        {
+            "date": "2025-02-11 09:51",
+            "type": "\u5de5\u4f5c\u5468\u671f",
+            "duration": 21
         }
     ],
-    "work_time": 6,
+    "work_time": 1500,
     "break_time": 300
 }

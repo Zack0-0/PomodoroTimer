@@ -18,9 +18,19 @@ def resource_path(relative_path):
         return os.path.join(sys._MEIPASS, relative_path)
     return os.path.join(os.path.abspath("."), relative_path)
 
+def get_writable_path(filename):
+    """获取可写目录中的文件路径"""
+    user_dir = os.path.expanduser("~")
+    app_dir = os.path.join(user_dir, ".pomodoro_timer")
+    if not os.path.exists(app_dir):
+        os.makedirs(app_dir)
+    return os.path.join(app_dir, filename)
+
 tomato_path = resource_path("tomato.ico")
 his_path = resource_path("his_logo.ico")
 visualize_path = resource_path("visualize_logo.ico")
+#stats_path = get_wirtable_path("gen_data.json")
+stats_path = get_writable_path("pomodoro_stats.json")
 
 class PomodoroTimer:
     def __init__(self, root):
@@ -323,7 +333,7 @@ class PomodoroTimer:
             "break_time": self.break_time
         }
         try:
-            with open("pomodoro_stats.json", "w") as f:
+            with open(stats_path, "w") as f:
                 json.dump(data, f)
         except Exception as e:
             print(f"保存数据失败: {e}")
@@ -331,11 +341,8 @@ class PomodoroTimer:
     def load_stats(self):
         """从文件加载统计数据"""
         try:
-            # 使用测试数据请将路径修改为 gen_data.json
-            '''if os.path.exists("pomodoro_stats.json"):
-                with open("pomodoro_stats.json", "r") as f:'''
-            if os.path.exists("gen_data.json"):
-                with open("gen_data.json", "r") as f:
+            if os.path.exists(stats_path):
+                with open(stats_path, "r") as f:
                     data = json.load(f)
                     self.completed_sessions = data.get("completed", 0)
                     self.total_work_time = data.get("total_time", 0)
